@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách xe</title>
+</head>
+<body>
+
+<div th:switch="${xeList}">
+    <h2 th:case="null">Not yet List car</h2>
+
+    <div th:case="*" >
+        <h1>Danh sách xe</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã xe</th>
+                    <th>Tên xe</th>
+                    <th>Giá xe</th>
+                    <th>Năm sản xuất</th>
+                    <th>Loại xe</th>
+                    <th><a th:href="@{/admin/addCar}">Thêm</a></th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="car : ${xeList}">
+                <td th:text="${car.maXe}"></td>
+                <td th:text="${car.tenXe}"></td>
+                <td th:text="${car.gia}"></td>
+                <td th:text="${car.namSX}"></td>
+                <td th:text="${car.loaiXe.tenLoai}"></td>
+                <td><a th:href="@{/admin/deleteCar/{maXe}(maXe=${car.maXe})}">Xóa</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

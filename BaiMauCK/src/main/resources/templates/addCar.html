@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/admin/add" method="post" th:object="${xe}">
+        <label>Tên xe: </label>
+        <input type="text" th:field="*{tenXe}"><br><br>
+        <label>Giá xe: </label>
+        <input type="text" th:field="*{gia}"><br><br>
+        <label>Năm sản xuất: </label>
+        <input type="text" th:field="*{namSX}"><br><br>
+        <label>Chọn loại xe: </label>
+        <select name="selCate" th:field="*{loaiXe}">
+            <option th:each="cate: ${loaiXeList}" th:value="${cate.maLoai}" th:text="${cate.tenLoai}"></option>
+        </select><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
